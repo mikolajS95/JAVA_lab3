@@ -1,76 +1,43 @@
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        /* cw.1 pętle while */
+        /* ćw.2 pętle for */
 
-        /* zad 1 - Napisać za pomocą pętli do-while kod który będzie iterował od liczby 1000 w dół do 0.
-          Jeśli liczba będzie podzielna przez 2 ostatnie cyfry waszego indeksu (podać nr indesu z uczelni)
-          to dać komunikat "liczba XX podzielna przez YY" (XX-liczba podzielna YY-podzielnik)
-        */
-        System.out.println("Zadanie 1:");
+        /* zad.1 Napisz program który będzie iterował od 100 do 0,
+         *  i wyświetlał liczby które są podzielne przez ostatnią cyfrę waszego indeksu
+         * (jesli tą liczbą jest 0 to przez 2 ostatnie) */
+        System.out.println("Zadanie 1: ");
 
-        int i = 1000;
-        int dwieOstatnieCyfryIndexu=25;
-        int x =0;
+        int ostatniaCyfraIndexu =5;
 
-        do {
-            if(i%dwieOstatnieCyfryIndexu==0)
-            {
-                System.out.println("Liczba " + i + " podzielna przez " + dwieOstatnieCyfryIndexu);
-            }
-
-        } while(i--!=1);
-
-        /* zad 2
-        a) stworzyć tablicę typu int wielkosci 5, przypisac jej dowolne wartości,
-          przeiterować tablicę po elementach i wyswietlić, użyć pętli while
-        b) jak wyżej tylko dla tablicy typu double[],
-        c) jak wyżej dla tablicy String[], przeiterować i wyświetlić od ostatniego elementu
-        */
-        System.out.println("Zadanie 2: ");
-        int[] tab = {1, 2, 3, 5, 8};
-        int counter =0;
-
-        System.out.println("Wartości tablicy int: ");
-        while (counter< tab.length)
+        for (int i= 100; i>0; i--)
         {
-            System.out.println(tab[counter++]);
-        }
-        double[] tabDouble = {1.01, 2.02, 3.03, 5.05, 8.08};
-        int counter2 =0;
-
-        System.out.println("Wartości tablicy double: ");
-        while (counter2< tabDouble.length)
-        {
-            System.out.println(tabDouble[counter2++]);
+            System.out.print(i%ostatniaCyfraIndexu==0 ? "\nLiczba " + i + " jest podzielna przez ostatnią cyfrę indexu (czyli 5)" : "");
         }
 
+        /* zad.2 Napisz program który będzie uzupełniał tablicę 5-cio elementową int[] liczbami
+         * wprowadzanymi z klawiatury (użyć klasy Scanner), a następnie będzie wyświetlał elementy tablicy
+         * za pomocą pętli forEach powiększone o 11 */
 
-        String[] stringTab = {"jeden", "dwa", "trzy", "cztery", "pięć"};
-        int counter3 =0;
+        System.out.println("\n\nZadanie 2: ");
 
-        System.out.println("Wartości tablicy string: ");
-        while (counter3< stringTab.length)
+        Scanner scan  = new Scanner(System.in);
+        int tab[] = new int[5];
+
+        for (int x=0; x<5;x++)
         {
-            System.out.println(stringTab[counter3++]);
+            System.out.println("\nPodaj liczbę: ");
+            int liczba = scan.nextInt();
+
+            tab[x]= liczba;
         }
 
-
-        /* zad.3
-        a) sprawdzić jak zachowuje się pętla while gdy w jej warunku damy true --> while(true)
-        b) a jak gdy damy false --> while(false)
-        */
-        System.out.println("Zadanie 3:");
-
-        while(true)
+        for (int z : tab)
         {
-            System.out.println("Pętla nieskończona");
+            System.out.println(z + 11);
         }
-        while(false)
-        {
-            System.out.println("Pętla się nie wykona");
-        }
-
     }
 }
