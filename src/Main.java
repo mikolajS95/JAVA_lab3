@@ -1,58 +1,74 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        /* ćw 4 klasy */
+
+        /* ćw 1 enum-y */
 
         /* zad.1
-            a) Stworzyć klasę Osoba z polami prywatnymi:
-            - imie (String),
-            - nazwisko (String),
-            - indeks (Integer)
-            b) stworzyc konstruktory, gettery i settery
-            c) napisać metodę w klasie Osoba która zwróci informację o osobie,
-         */
+        a) Stworzyć prosty enum "LiczbyEnum" z liczbami od 1 do 6 zapisanymi słownie,
+        b) stworzyć prosty enum "StatusEnum" z wartościami KONTYNUUJEMY i KONIEC,
+        c) stworzyć pętlę while z wartością true w warunku (nieskończona pętla),
+        d) niech w pętli są podawane wartości liczbowe z klawiatury,
+        e) jeśli użytkownik poda z klawiatury 0 to program ma kończyć działanie,
+        f) umieścić w pętli switch() case: które będą wypisywały cyfry słownie odpowiednio
+        do podanych cyfr przez użytkownika,
+        g) gdy użytkownik wciśnie 0 ma wyświetlić się status KONIEC w innym wypadku KONTYNUUJEMY :),
+        */
 
-        /* zad.2
-            a) Stworzyć klasę Student z polami prywatnymi
-            - Osoba osoba,
-            - WydzialEnum wydzial;
-            b) stworzyć enum WydzialEnum (w nowym pliku) z kilkoma polami,
-            c) stworzyc konstruktory, gettery i settery
-            d) nadpisać metodę toString aby zwracała wszystkie elementy ładnie przedstawione :)
-         */
+        /* statusy i wybór ze switch case to najczęstsze użycia enumów, enumy są często używane
+         * w różnego rodzaju listach, selectach jako krótkie opcje wyboru np. jako status A, X (Aktualny, Usunięty) */
 
-        /* zad.3
-            a) W klasie Main stworzyć 5 różnych studentów, (można za pomocą tego samego objektu)
-            b) dodać studentów do Listy ArrayList,
-            c) przeiterować listę za pomocą pętli forEach wywołując na każdym objekcie metodę toString() (w każdej iteracji);
-         */
-
-        Osoba a = new Osoba("Karol", "Krawczyk", 12345);
-        Osoba b = new Osoba("Tadeusz", "Norek", 23346);
-        Osoba c = new Osoba("Danuta", "Norek", 12365);
-        Osoba d = new Osoba("Alina", "Krawczyk", 34234);
-        Osoba e = new Osoba("Roman", "Kurski", 12654);
-
-
-        List<Student> listaStudentow = new ArrayList<>();
-
-        Student jeden = new Student();
-        listaStudentow.add(jeden);
-        Student dwa = new Student();
-        listaStudentow.add(dwa);
-        Student trzy = new Student();
-        listaStudentow.add(trzy);
-        Student cztery = new Student();
-        listaStudentow.add(cztery);
-        Student piec = new Student();
-        listaStudentow.add(piec);
-
-        for (Student x : listaStudentow)
+        // a)
+        enum LiczbaENUM
         {
-            System.out.println(x.toString());
+            jeden, dwa, trzy, cztery, pięć, sześć;
+        }
+        // b)
+        enum StatusENUM
+        {
+            KONTYNUUJEMY, KONIEC
+        }
+        // c) & d)
+        Scanner scan = new Scanner(System.in);
+
+        while(true)
+        {
+            System.out.print("Podaj liczbę: ");
+            int liczba= scan.nextInt();
+            if(liczba==0)
+            {
+                System.out.println(StatusENUM.KONIEC);
+                System.out.println();
+                break;
+            }
+
+            switch (liczba)
+            {
+                case 1:
+                    System.out.println(LiczbaENUM.jeden);
+                    break;
+                case 2:
+                    System.out.println(LiczbaENUM.dwa);
+                    break;
+                case 3:
+                    System.out.println(LiczbaENUM.trzy);
+                    break;
+                case 4:
+                    System.out.println(LiczbaENUM.cztery);
+                    break;
+                case 5:
+                    System.out.println(LiczbaENUM.pięć);
+                    break;
+                case 6:
+                    System.out.println(LiczbaENUM.sześć);
+                    break;
+                default:
+                    System.out.println("Błędna wartość. Wybierz wartość z przedziału 1 - 6 lub 0 by zakończyć.");
+            }
+            System.out.println(StatusENUM.KONTYNUUJEMY);
+            System.out.println();
         }
 
     }
