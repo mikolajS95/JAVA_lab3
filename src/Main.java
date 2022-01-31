@@ -1,92 +1,59 @@
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Collections;
-import java.util.Scanner;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
+        /* ćw 4 klasy */
 
-        /* ćw_6 Listy */
-
-        /* zad.1 a) Napisać program który stworzy listę ArrayList<String> (lista tablicowa),
-                Proszę dane wprowadzać z klawiatury (można użyć pętli), lista ma mieć przynajmniej 5
-                elementów i elementami mają być nazwy zwierząt.
-                b) proszę stworzyć metodę która będzie miała pętle forEach i będzie wyświetlała elementy Listy
-                -- podpowiedź: for(String zmienna : List<String>)
-                c) proszę usunąć 2 ostatnie elementy listy i dodać do niej 3 inne elementy,
-                następnie wyświetlić listę i wielkość listy,
-                d) następnie proszę wykonać odwrotne sortowanie i znów użyć metody z punktu b) do wyświetlenia
-                elementów listy
-          */
-
-        //Nie zrozumiałem czy wartosci z listy maja byc zwierzetami, czy dowolnie wpisanymi przez uzytkownika wartosciami,
-        //wiec zrobilem dwie listy.
-
-        //ZADANIE a)
-        Scanner scan = new Scanner(System.in);
-        List<String> lista= new ArrayList<>();
-
-        for (int i=0; i<5; i++)
-        {
-            System.out.println("Wpisz wartosc ktora ma byc w liście: ");
-            String wartosc = scan.nextLine();
-            lista.add(wartosc);
-        }
-
-        List<String> listaZwierzat= new ArrayList<>();
-        listaZwierzat.add("Lew");
-        listaZwierzat.add("Tygrys");
-        listaZwierzat.add("Kot");
-        listaZwierzat.add("Puma");
-        listaZwierzat.add("Ryś");
-
-        //ZADANIE b)
-        wyswietlListe(listaZwierzat);
-        //ZADANIE c)
-        listaZwierzat.remove((listaZwierzat.get(listaZwierzat.size()-1)));
-        listaZwierzat.remove((listaZwierzat.get(listaZwierzat.size()-1)));
-
-        listaZwierzat.add("Gepard");
-        listaZwierzat.add("Pantera");
-        listaZwierzat.add("Jaguar");
-
-        wyswietlListe(listaZwierzat);
-        System.out.println("Wielkość listy: " + listaZwierzat.size());
-
-        //ZADANIE d)
-        Collections.reverse(listaZwierzat);
-        wyswietlListe(listaZwierzat);
-
-         /* zad.2 Napisać program który stworzy Set<Integer> i wprowadzamy 10 liczb z klawiatury
-                niech liczby się powtarzają, proszę posortować a następnie wyświetlić zawartość set-a w konsoli
-                 a następnie przeiterować i wyświetlić forEach-em (jak wyżej)
+        /* zad.1
+            a) Stworzyć klasę Osoba z polami prywatnymi:
+            - imie (String),
+            - nazwisko (String),
+            - indeks (Integer)
+            b) stworzyc konstruktory, gettery i settery
+            c) napisać metodę w klasie Osoba która zwróci informację o osobie,
          */
-        //ZADANIE 2
-        Set<Integer> setIntList = new TreeSet<>();
-        System.out.println("Wprowadź 10 liczb z klawiatury.");
 
-        for (int i=1; i<=10;i++)
+        /* zad.2
+            a) Stworzyć klasę Student z polami prywatnymi
+            - Osoba osoba,
+            - WydzialEnum wydzial;
+            b) stworzyć enum WydzialEnum (w nowym pliku) z kilkoma polami,
+            c) stworzyc konstruktory, gettery i settery
+            d) nadpisać metodę toString aby zwracała wszystkie elementy ładnie przedstawione :)
+         */
+
+        /* zad.3
+            a) W klasie Main stworzyć 5 różnych studentów, (można za pomocą tego samego objektu)
+            b) dodać studentów do Listy ArrayList,
+            c) przeiterować listę za pomocą pętli forEach wywołując na każdym objekcie metodę toString() (w każdej iteracji);
+         */
+
+        Osoba a = new Osoba("Karol", "Krawczyk", 12345);
+        Osoba b = new Osoba("Tadeusz", "Norek", 23346);
+        Osoba c = new Osoba("Danuta", "Norek", 12365);
+        Osoba d = new Osoba("Alina", "Krawczyk", 34234);
+        Osoba e = new Osoba("Roman", "Kurski", 12654);
+
+
+        List<Student> listaStudentow = new ArrayList<>();
+
+        Student jeden = new Student();
+        listaStudentow.add(jeden);
+        Student dwa = new Student();
+        listaStudentow.add(dwa);
+        Student trzy = new Student();
+        listaStudentow.add(trzy);
+        Student cztery = new Student();
+        listaStudentow.add(cztery);
+        Student piec = new Student();
+        listaStudentow.add(piec);
+
+        for (Student x : listaStudentow)
         {
-            System.out.println("Wprowadź liczbę nr " + i+ ":");
-            int liczba= scan.nextInt();
-            setIntList.add(liczba);
+            System.out.println(x.toString());
         }
 
-        //Collections.sort(setIntList);
-
-        for(Integer num : setIntList){
-            System.out.println(num);
-        }
-
-    }
-    public static void wyswietlListe(List<String> lista)
-    {
-        System.out.println("\nZawartosc listy ze zwierzetami: ");
-        for (String word:lista) {
-            System.out.print(word+ ", ");
-
-        }
     }
 }
